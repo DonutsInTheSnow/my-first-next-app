@@ -49,8 +49,12 @@ export default function Home() {
         }}
       >
         <h1>Todos</h1>
-        <Link href="/about" className="about-link">Go to About</Link>
-        <Link href="/contact" className="about-link">Contact Us</Link>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+          <Link href="/about" className="about-link">Go to About</Link>
+          <Link href="/gallery" className="about-link">Gallery</Link>
+          <Link href="/faq" className="about-link">FAQ</Link>
+          <Link href="/contact" className="about-link">Contact Us</Link>
+        </div>
         {todos.map((todo) => (
           <div
             key={todo.id}

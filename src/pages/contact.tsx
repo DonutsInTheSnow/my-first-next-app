@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Link from 'next/link';
 
 export default function Contact() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -10,6 +11,7 @@ export default function Contact() {
   
     return (
       <div>
+        <Link href="/" className="about-link" style={{ display: 'block', margin: '10px 0' }}>Back to Home</Link>
         <h1>Contact Us</h1>
         <form
           onSubmit={handleSubmit}
