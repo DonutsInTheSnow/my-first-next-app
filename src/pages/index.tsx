@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 interface Todo {
   id: number;
@@ -48,6 +49,8 @@ export default function Home() {
         }}
       >
         <h1>Todos</h1>
+        <Link href="/about" className="about-link">Go to About</Link>
+        <Link href="/contact" className="about-link">Contact Us</Link>
         {todos.map((todo) => (
           <div
             key={todo.id}
