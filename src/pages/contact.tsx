@@ -1,4 +1,3 @@
-import '@/styles/about.css';
 import { useRef } from 'react';
 
 export default function Contact() {
