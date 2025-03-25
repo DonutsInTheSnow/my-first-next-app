@@ -51,6 +51,10 @@ export default function Home() {
         <h1>Todos</h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
           <Link href="/about" className="about-link">Go to About</Link>
+          <Link href="/todos/1" className="about-link">Todo 1</Link>
+          <Link href="/todos/2" className="about-link">Todo 2</Link>
+          <Link href="/todos/3" className="about-link">Todo 3</Link>
+          <Link href="/todos/4" className="about-link">Todo 4</Link>
           <Link href="/gallery" className="about-link">Gallery</Link>
           <Link href="/faq" className="about-link">FAQ</Link>
           <Link href="/contact" className="about-link">Contact Us</Link>
