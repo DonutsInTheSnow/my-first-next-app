@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface Todo {
   id: number;
   title: string;
   completed: boolean;
   userId: number;
+  fuglyRating?: number;
 }
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const { newTodo } = router.query;
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -25,6 +29,12 @@ export default function Home() {
     };
     fetchTodos();
   }, []);
+
+  useEffect(() => {
+    if (newTodo) {
+      setTodos((prev) => [...prev, JSON.parse(newTodo as string)]);
+    }
+  }, [newTodo]);
 
   return (
     <div
@@ -51,6 +61,7 @@ export default function Home() {
         <h1>Todos</h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
           <Link href="/about" className="about-link">Go to About</Link>
+          <Link href="/todos/new" className="about-link">New Todo</Link>
           <Link href="/todos/1" className="about-link">Todo 1</Link>
           <Link href="/todos/2" className="about-link">Todo 2</Link>
           <Link href="/todos/3" className="about-link">Todo 3</Link>
@@ -74,6 +85,7 @@ export default function Home() {
             <p>Title: {todo.title}</p>
             <p>User: {todo.userId}</p>
             <p>Completed: {todo.completed ? 'Yes' : 'No'}</p>
+            {todo.fuglyRating && <p>Fugly Rating: {todo.fuglyRating}</p>}
           </div>
         ))}
         {error && <p>Error: {error}</p>}
